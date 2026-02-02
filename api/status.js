@@ -37,6 +37,7 @@ export default async function handler(req, res) {
 
     const data = await spotifyRes.json();
 
+    const imageUrl = data.item.album.images[0].url;
     const song = data.item?.name;
     const artist = data.item?.artists
       ?.map(a => a.name)
@@ -52,7 +53,8 @@ export default async function handler(req, res) {
     // 3. Return SIMPLE text response
     return res.status(200).json({
       playing: true,
-      text: `Listening to ${song} – ${artist}`
+      text: `${song} – ${artist}`,
+      imageUrl: imageUrl
     });
 
   } catch (err) {
