@@ -42,6 +42,9 @@ export default async function handler(req, res) {
     const artist = data.item?.artists
       ?.map(a => a.name)
       .join(", ");
+    const spotifyUrl = data.item.external_urls && data.item.external_urls.spotify
+        ? data.item.external_urls.spotify
+        : `https://open.spotify.com/track/${data.item.id}`;  
 
     if (!song || !artist) {
       return res.status(200).json({
@@ -54,7 +57,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       playing: true,
       text: `${song} – ${artist}`,
-      imageUrl: imageUrl
+      imageUrl: imageUrl,
+      spotifyUrl: spotifyUrl
     });
 
   } catch (err) {
