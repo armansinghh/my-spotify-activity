@@ -17,14 +17,15 @@ Displays my Spotify's currently playing track in a unique way with real-time upd
 
 ## Project Structure
 ```
-├── api/
-│   └── token.js          # Serverless function for token refresh
-├── src/
-│   ├── app/
+├── api
+│   ├── status.js         #  Endpoint to allow public read access 
+│   └── token.js          #  Serverless function for token refresh
+├── src
+│   ├── app
 │   │   └── index.js      # Frontend JavaScript
-│   ├── css/
+│   ├── css
 │   │   └── style.css     # Styles
-│   └── img/
+│   └── img
 │       └── ico.png       # Favicon
 └── index.html            # Main HTML file
 ```
